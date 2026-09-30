@@ -1,2 +1,9 @@
 # Sprint-3-y-4
 
+Inicializar backend:
+cd backend
+npm run dev
+
+incializar frontend:
+cd frontend
+npm run dev
