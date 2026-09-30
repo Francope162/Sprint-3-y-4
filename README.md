@@ -7,3 +7,10 @@ npm run dev
 incializar frontend:
 cd frontend
 npm run dev
+
+instalar dependencias:
+cd frontend
+npm install
+
+cd backend
+npm install
