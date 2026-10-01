@@ -14,3 +14,7 @@ npm install
 
 cd backend
 npm install
+
+Rutas GET de la API:
+-Obtener todos los productos: /api/products/
+-Obtener un producto: /api/products/:id
