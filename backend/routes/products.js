@@ -19,30 +19,38 @@ async function readProducts() {
 }
 
 //Obtener todos los productos
-productRouter.get('/', async (req, res) => {
+productRouter.get('/', async (req, res, next) => {
     try {
         const products = await readProducts();
         res.json(products);
     } catch (error) {
-        res.status(500).json({ error: 'Error al obtener los productos' });
+        next(error);
     }
 });
 
 //Obtener un producto
-productRouter.get('/:id', async (req, res) => {
+productRouter.get('/:id', async (req, res, next) => {
     try {
         const products = await readProducts();
         const { id } = req.params;
 
+        if (isNaN(id) || isNaN(Number(id))) {
+            const error = new Error('El ID debe ser un número válido');
+            error.statusCode = 400;
+            return next(error);
+        }
+
         const product = products.find(p => String(p.id) === String(id));
 
         if (!product) {
-            return res.status(404).json({ error: 'Producto no encontrado' });
+            const error = new Error("Producto no encontrado");
+            error.statusCode = 404;
+            return next(error);
         }
 
         res.json(product);
     } catch (error) {
-        res.status(500).json({ error: 'Error al obtener el producto' });
+        next(error);
     }
 });
 
