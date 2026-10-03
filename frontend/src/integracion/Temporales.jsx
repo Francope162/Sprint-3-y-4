@@ -57,5 +57,4 @@ export function ProductDetail({ id, onVolver, onAgregarAlCarrito }) {
     {estado.datos && <article><h1>{estado.datos.name}</h1><p>{estado.datos.desc}</p><p>{formatoPrecio(estado.datos.price)}</p><button type="button" onClick={() => onAgregarAlCarrito(estado.datos)}>Agregar al carrito</button></article>}
   </section>
 }
-export function ContactForm() { return <section><h1>Contacto</h1><p>Espacio reservado para el formulario del equipo.</p></section> }
 export function Footer() { return <footer>Proyecto educativo — Integración en desarrollo</footer> }

@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import Cart from './components/Cart.jsx'
 import { agregarProducto, quitarProducto, contarUnidades } from './utils/carrito.js'
 // Reemplazar estos imports cuando lleguen los componentes del equipo.
-import { Navbar, Home, ProductList, ProductDetail, ContactForm, Footer } from './integracion/Temporales.jsx'
+import ContactForm from './components/ContactForm.jsx'
+import { Navbar, Home, ProductList, ProductDetail, Footer } from './integracion/Temporales.jsx'
 import './App.css'
 
 const titulos = { inicio: 'Inicio', catalogo: 'Catálogo', detalle: 'Detalle', carrito: 'Carrito', contacto: 'Contacto' }
