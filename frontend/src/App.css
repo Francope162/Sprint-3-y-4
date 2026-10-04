@@ -1,4 +1,4 @@
-main, .integration-header, footer { max-width: 1100px; margin: auto; padding: 1rem; }
+.integration-header { max-width: 1100px; margin: auto; padding: 1rem; }
 main { min-height: 65vh; }
 .integration-header nav { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
 .integration-products, .cart-list { list-style: none; padding: 0; display: grid; gap: 1rem; }

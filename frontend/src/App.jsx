@@ -3,7 +3,10 @@ import Cart from './components/Cart.jsx'
 import { agregarProducto, quitarProducto, contarUnidades } from './utils/carrito.js'
 // Reemplazar estos imports cuando lleguen los componentes del equipo.
 import ContactForm from './components/ContactForm.jsx'
-import { Navbar, Home, ProductList, ProductDetail, Footer } from './integracion/Temporales.jsx'
+import { Navbar } from './components/Navbar.jsx'
+import { Home }from './components/Home.jsx'
+import { Footer } from './components/Footer.jsx'
+import {ProductList, ProductDetail} from './integracion/Temporales.jsx'
 import './App.css'
 
 const titulos = { inicio: 'Inicio', catalogo: 'Catálogo', detalle: 'Detalle', carrito: 'Carrito', contacto: 'Contacto' }
@@ -60,6 +63,6 @@ export default function App() {
       {vista === 'carrito' && <Cart items={carrito} onQuitar={quitar} onVolver={() => navegar('catalogo')} />}
       {vista === 'contacto' && <ContactForm />}
     </main>
-    <Footer />
+    <Footer onNavegar="{navegar}"/>
   </>
 }
