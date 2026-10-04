@@ -13,12 +13,12 @@ export default function Cart({ items, onQuitar, onVolver }) {
               <p>Precio unitario: {formatoPrecio(item.price)}</p>
               <p>Subtotal: {formatoPrecio(item.price * item.cantidad)}</p>
             </div>
-            <button type="button" onClick={() => onQuitar(item.id)} aria-label={`Quitar ${item.name} del carrito`}>Quitar</button>
+            <button className="btn-secondary" type="button" onClick={() => onQuitar(item.id)} aria-label={`Quitar ${item.name} del carrito`}>Quitar</button>
           </li>)}
         </ul>
         <p className="cart-total">Total: {formatoPrecio(calcularTotal(items))}</p>
       </>}
-      <button type="button" onClick={onVolver}>Seguir explorando</button>
+      <button className="btn-primary" type="button" onClick={onVolver}>Seguir explorando</button>
       <p>Precios ilustrativos en ARS. No se realizan compras reales.</p>
     </section>
   )

@@ -106,7 +106,7 @@ export default function ProductList({ onVerDetalle, onAgregarAlCarrito }) {
               <option value="">Destacados</option>
               <option value="price-low">Precio: Menor a Mayor</option>
               <option value="price-high">Precio: Mayor a Menor</option>
-              <option value="newest">Más nuevos</option>
+
             </select>
           </div>
         </div>

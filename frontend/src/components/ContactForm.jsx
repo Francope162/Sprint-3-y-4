@@ -59,6 +59,7 @@ export default function ContactForm() {
     if (Object.keys(siguientesErrores).length > 0) {
       setEnviado(false)
       setErrores(siguientesErrores)
+      evento.currentTarget.elements.namedItem(Object.keys(siguientesErrores)[0])?.focus()
       return
     }
 
@@ -69,14 +70,14 @@ export default function ContactForm() {
 
   return (
     <section id="contacto" className={estilos.seccion} aria-labelledby="contacto-titulo">
-      <h2 id="contacto-titulo" className={estilos.titulo}>Escribinos</h2>
+      <h1 id="contacto-titulo" className={estilos.titulo}>Escribinos</h1>
       <p className={estilos.bajada}>
-        ¿Tenés una consulta sobre un mueble o un pedido especial? Completá el formulario y te respondemos a la brevedad.
+        ¿Tenés una consulta sobre un mueble o un pedido especial? Este formulario educativo valida tus datos; no envía mensajes.
       </p>
 
       {enviado && (
         <p className={estilos.exito} role="alert" aria-live="polite">
-          Recibimos tu consulta. Gracias por escribirnos, te contactaremos pronto.
+          Formulario validado correctamente. No se envió ningún mensaje.
         </p>
       )}
 
@@ -167,7 +168,7 @@ export default function ContactForm() {
           )}
         </div>
 
-        <button className={estilos.enviar} type="submit">Enviar consulta</button>
+        <button className={estilos.enviar} type="submit">Validar consulta</button>
       </form>
     </section>
   )
