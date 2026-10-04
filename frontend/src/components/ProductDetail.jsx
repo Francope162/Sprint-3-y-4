@@ -51,7 +51,8 @@ export default function ProductDetail({ id, onVolver, onAgregarAlCarrito }) {
   if (loading) {
     return (
       <div className="contenedor-producto" role="status" aria-live="polite">
-        <p>⏳ Cargando producto...</p>
+        <span className="loader" aria-hidden="true" />
+        <p>Cargando producto...</p>
       </div>
     );
   }

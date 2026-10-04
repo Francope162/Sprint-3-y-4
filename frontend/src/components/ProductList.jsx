@@ -72,9 +72,10 @@ export default function ProductList({ onVerDetalle, onAgregarAlCarrito }) {
 
   if (loading) {
     return envolver(
-      <p className="estado-catalogo" role="status" aria-live="polite">
-        ⏳ Cargando productos...
-      </p>
+      <div className="estado-catalogo" role="status" aria-live="polite">
+        <span className="loader" aria-hidden="true" />
+        <p>Cargando productos...</p>
+      </div>
     );
   }
 

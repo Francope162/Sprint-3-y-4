@@ -5,8 +5,6 @@ const path = require('path');
 const productRouter = express.Router();
 const filePath = path.join(__dirname, '../db/products.json');
 
-productRouter.use(express.json());
-
 //Obtener datos desde archivo JSON
 async function readProducts() {
     try {
