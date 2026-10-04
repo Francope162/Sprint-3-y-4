@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ProductCard from './ProductCard.jsx';
 // Importamos la función de tu compañero para traer los productos
 import { getProducts } from '../services/productService.js';
@@ -11,16 +11,20 @@ export function Home({ onVerCatalogo, onVerContacto, onVerDetalle, onAgregarAlCa
 
     // useEffect se ejecuta una sola vez al cargar el componente
     useEffect(() => {
+        let activo = true;
         getProducts()
             .then(data => {
+                if (!activo) return;
                 // Tomamos solo los primeros 4 productos para la sección destacada
                 setProductosDestacados(data.slice(0, 4));
                 setCargando(false);
             })
             .catch(err => {
+                if (!activo) return;
                 setError(err.message);
                 setCargando(false);
             });
+        return () => { activo = false; };
     }, []);
 
     return (
@@ -29,7 +33,7 @@ export function Home({ onVerCatalogo, onVerContacto, onVerDetalle, onAgregarAlCa
             <section className="hero" aria-labelledby="hero-title">
                 <div className="hero-content">
                     <p className="hero-eyebrow">Mueblería artesanal</p>
-                    <h1>HERMANOS JOTA</h1>
+                    <h1 id="hero-title">HERMANOS JOTA</h1>
                     <p className="hero-description">Tradición que perdura. Diseño que trasciende.</p>
                     <p className="hero-text">
                         Cada pieza cuenta una historia de artesanía que honra el pasado mientras abraza el futuro.
@@ -51,22 +55,24 @@ export function Home({ onVerCatalogo, onVerContacto, onVerDetalle, onAgregarAlCa
                     </p>
                 </div>
                 
-                <div id="productos-destacados" className="productos-grid" aria-live="polite">
+                <div aria-live="polite">
                     {/* Manejo de estados de carga y error exigidos por la consigna */}
                     {cargando && <p style={{ textAlign: 'center', gridColumn: '1 / -1' }}>Cargando productos destacados...</p>}
                     
                     {error && <p style={{ textAlign: 'center', gridColumn: '1 / -1', color: '#c0392b' }}>{error}</p>}
                     
                     {/* Renderizado de lista con .map() y keys cuando hay éxito */}
-                    {!cargando && !error && productosDestacados.map((producto) => (
+                    {!cargando && !error && productosDestacados.length === 0 && <p>No hay productos disponibles.</p>}
+                    {!cargando && !error && <ul id="productos-destacados" className="productos-grid">{productosDestacados.map((producto) => (
+                        <li key={producto.id}>
                         <ProductCard
-                            key={producto.id}
                             product={producto}
                             onSelect={onVerDetalle}
                             onAddToCart={onAgregarAlCarrito}
                             headingLevel={3}
                         />
-                    ))}
+                        </li>
+                    ))}</ul>}
                 </div>
 
                 <div className="destacados-action">
@@ -130,78 +136,4 @@ export function Home({ onVerCatalogo, onVerContacto, onVerDetalle, onAgregarAlCa
             </section>
         </>
     );
-}import { useEffect, useState } from 'react'
-import { getProducts } from '../services/productService'
-import ProductCard from './ProductCard'
-
-export default function Home({ onVerCatalogo, onVerContacto, onVerDetalle, onAgregarAlCarrito }) {
-  const [destacados, setDestacados] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-
-  useEffect(() => {
-    let cancelled = false
-
-    setLoading(true)
-    setError(null)
-
-    getProducts()
-      .then((data) => {
-        if (!cancelled) setDestacados(Array.isArray(data) ? data.slice(0, 3) : [])
-      })
-      .catch((err) => {
-        if (!cancelled) setError(err.message)
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false)
-      })
-
-    return () => {
-      cancelled = true
-    }
-  }, [])
-
-  return (
-    <section aria-labelledby="titulo-inicio">
-      <h1 id="titulo-inicio" className="seccion-titulo">Hermanos Jota</h1>
-      <p>
-        Muebles de autor en madera maciza. Explorá el catálogo o escribinos para una consulta.
-      </p>
-      <div className="home-acciones">
-        <button type="button" className="btn-primary" onClick={onVerCatalogo}>
-          Explorar catálogo
-        </button>
-        {onVerContacto && (
-          <button type="button" className="btn-secondary" onClick={onVerContacto}>
-            Escribinos
-          </button>
-        )}
-      </div>
-
-      <h2 className="seccion-subtitulo">Destacados</h2>
-      {loading && (
-        <div className="estado-catalogo" role="status" aria-live="polite">
-          <span className="loader" aria-hidden="true" />
-          <p>Cargando productos...</p>
-        </div>
-      )}
-      {error && (
-        <p className="estado-catalogo estado-error" role="alert">{error}</p>
-      )}
-      {!loading && !error && destacados.length > 0 && (
-        <ul className="productos-grid">
-          {destacados.map((product) => (
-            <li key={product.id}>
-              <ProductCard
-                product={product}
-                headingLevel={3}
-                onSelect={onVerDetalle}
-                onAddToCart={onAgregarAlCarrito}
-              />
-            </li>
-          ))}
-        </ul>
-      )}
-    </section>
-  )
 }

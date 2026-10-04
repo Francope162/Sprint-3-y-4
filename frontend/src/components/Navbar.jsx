@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 export function Navbar({ cantidadCarrito, vista, onNavegar }) {
     return (

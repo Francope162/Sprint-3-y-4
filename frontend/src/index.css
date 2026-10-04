@@ -1,12 +1,3 @@
-/* Base provisional: coordinar su reemplazo con el responsable de diseño. */
-:root { font-family: Inter, system-ui, sans-serif; color: #29231f; background: #f5e6d3; line-height: 1.5; }
-* { box-sizing: border-box; }
-body { margin: 0; }
-button { font: inherit; cursor: pointer; min-height: 44px; padding: .5rem .9rem; border: 1px solid #a0522d; border-radius: .3rem; background: white; color: #703719; }
-button:focus-visible, a:focus-visible { outline: 3px solid #29231f; outline-offset: 3px; }
-button[aria-current='page'] { background: #a0522d; color: white; }
-h1, h2, h3 { line-height: 1.2; overflow-wrap: anywhere; }
-
 /* ==========================================
    1. RESET Y VARIABLES GLOBALES (Manual de Marca)
    ========================================== */
@@ -20,11 +11,11 @@ h1, h2, h3 { line-height: 1.2; overflow-wrap: anywhere; }
     --primary-color: #A0522D;       /* Color principal de la marca */
     --accent-color: #87A96B;        /* Color de acento / secundario */
     --bg-light: #F5E6D3;            /* Fondo general claro indicado en el manual */
-    --text-color: #333333;   
-    --premium-color: #D4A437; 
-    --details-color: #C4746D;          
+    --text-color: #333333;
+    --premium-color: #D4A437;
+    --details-color: #C47A6D;
     --white: #ffffff;
-    --font-heading: 'Playfair Display', Georgia, serif;                        /* Fuente para títulos según el manual */ 
+    --font-heading: 'Playfair Display', Georgia, serif;                        /* Fuente para títulos según el manual */
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;       /* Fuente para el cuerpo del texto */
 }
 
@@ -81,7 +72,7 @@ html {
 
 /* Control estricto del logotipo según las normas del manual */
 .logo-img {
-    width: 120px; 
+    width: 120px;
     height: auto;
     display: block;
     filter: brightness(0) invert(1);
@@ -125,7 +116,7 @@ html {
   max-width: 600px;
   text-align: center;
  }
- 
+
 .hero-eyebrow {
     color: var(--accent-color);
 
@@ -288,7 +279,7 @@ html {
 
     transition:
         transform 0.3s ease,
-        border-color 0.3s ease; 
+        border-color 0.3s ease;
 }
 
 .card:hover {
@@ -301,7 +292,7 @@ html {
   aspect-ratio: 1 / 1;
   object-fit: contain;
   display: block;
-  background-color: var(--bg-light); 
+  background-color: var(--bg-light);
 
 }
 
@@ -368,7 +359,7 @@ html {
     transition:
         background-color 0.25s ease,
         transform 0.25s ease;
-        
+
 }
 
 .btn-primary:hover {
@@ -737,13 +728,13 @@ html {
         text-align: left;
         padding: 0 2rem;
     }
-    
+
     .footer-showroom,
     .footer-contacto {
         text-align: left;
         flex: 1;
     }
-    
+
     .footer-links {
         flex-direction: column;
         align-items: flex-start;
@@ -756,12 +747,12 @@ html {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    
+
     .beneficio-card {
         flex: 1 1 300px;
         max-width: 320px;
     }
-    
+
     .back-to-top {
         bottom: 2rem;
         right: 2rem;
@@ -773,7 +764,7 @@ html {
         flex: 1 1 300px;
         max-width: 320px;
     }
-    
+
 /* Adaptación del Hero Banner a mobile*/
 
     .hero {
@@ -1023,7 +1014,7 @@ textarea:focus {
 .precio-producto {
     color: var(--primary-color);
     font-size: 2rem;
-    font-weight: 400; 
+    font-weight: 400;
     font-family: var(--font-heading);
     letter-spacing: 0.06em;
 }
@@ -1040,7 +1031,7 @@ textarea:focus {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     border: none;
-    border-radius: 9px; 
+    border-radius: 9px;
     cursor: pointer;
     transition: background-color 0.2s ease;
     box-shadow: 0 2px 5px rgba(160, 82, 45, 0.04);
@@ -1049,7 +1040,7 @@ textarea:focus {
 
 .btn-agregar-carrito:hover,
 .btn-agregar-carrito:focus {
-    background-color: var(--accent-color); 
+    background-color: var(--accent-color);
     outline: none;
 }
 
@@ -1094,82 +1085,5 @@ textarea:focus {
 
     .btn-agregar-carrito {
         font-size: 1.1rem;
-    }
-}
-
-
-
-.product-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
-    list-style: none;
-    padding: 0;
-}
-
-.product-list li {
-    display: flex;
-    flex-direction: column;
-    background: #ffffff;
-    border: 1px solid #e1e1e1;
-    border-radius: 8px;
-    overflow: hidden; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease;
-}
-
-.product-list li:hover {
-    transform: translateY(-4px);
-}
-
-.card-img{
-    width: 100%;
-    height: 220px; 
-    object-fit: cover; 
-    display: block;
-}
-
-.product-list li .card-body {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    padding: 16px;
-}
-
-.product-list li .card-actions {
-    margin-top: auto;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.card-title {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    
-    min-height: 2.8em; /* 1.4em por línea x 2 */
-}
-
-.card-description {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-bottom: 15px;
-}
-
-@media (max-width: 768px) {
-    .card-img {
-        height: 200px;
-        width: 200px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
     }
 }

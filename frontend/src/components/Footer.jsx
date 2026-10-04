@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export function Footer({ onNavegar }) {
     // 1. Estado para controlar si el botón es visible
@@ -26,7 +26,7 @@ export function Footer({ onNavegar }) {
         e.preventDefault();
         window.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
         });
     };
 
@@ -76,21 +76,4 @@ export function Footer({ onNavegar }) {
             </a>
         </footer>
     );
-}
-export default function Footer() {
-  return (
-    <footer className="site-footer">
-      <p className="site-footer__marca">Mueblería Hermanos Jota</p>
-      <address>
-        <p>Av. San Juan 2847, CABA, Argentina</p>
-        <p>
-          <a href="mailto:info@hermanosjota.com.ar">info@hermanosjota.com.ar</a>
-        </p>
-        <p>
-          <a href="tel:+541145678900">+54 11 4567-8900</a>
-        </p>
-      </address>
-      <p>Proyecto educativo — no se realizan compras reales.</p>
-    </footer>
-  )
 }
