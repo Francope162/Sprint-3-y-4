@@ -7,6 +7,10 @@ import Home from './components/Home.jsx'
 import ProductDetail from './components/ProductDetail.jsx'
 import ProductList from './components/ProductList.jsx'
 import { Navbar } from './integracion/Temporales.jsx'
+import { Navbar } from './components/Navbar.jsx'
+import { Home }from './components/Home.jsx'
+import { Footer } from './components/Footer.jsx'
+import {ProductList, ProductDetail} from './integracion/Temporales.jsx'
 import './App.css'
 
 const titulos = { inicio: 'Inicio', catalogo: 'Catálogo', detalle: 'Detalle', carrito: 'Carrito', contacto: 'Contacto' }
@@ -63,6 +67,6 @@ export default function App() {
       {vista === 'carrito' && <Cart items={carrito} onQuitar={quitar} onVolver={() => navegar('catalogo')} />}
       {vista === 'contacto' && <ContactForm />}
     </main>
-    <Footer />
+    <Footer onNavegar="{navegar}"/>
   </>
 }

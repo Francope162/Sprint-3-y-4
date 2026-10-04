@@ -279,3 +279,16 @@ button.btn-secondary {
     align-items: start;
   }
 }
+.integration-header { max-width: 1100px; margin: auto; padding: 1rem; }
+main { min-height: 65vh; }
+.integration-header nav { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.integration-products, .cart-list { list-style: none; padding: 0; display: grid; gap: 1rem; }
+.integration-products article, .cart-item { padding: 1rem; border: 1px solid #a0522d; border-radius: .4rem; background: #fffaf3; }
+.integration-products button { margin: .25rem; }
+.cart-item { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+.cart-item h2 { font-size: 1.2rem; }
+.cart-total { font-size: 1.4rem; font-weight: 700; }
+.skip-link { position: absolute; top: -100px; background: white; padding: 1rem; color: #29231f; }
+.skip-link:focus { top: 0; }
+@media (min-width: 640px) { .integration-products { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 960px) { .integration-products { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
